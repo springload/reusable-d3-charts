@@ -8,6 +8,7 @@ export default class BasicChart {
     constructor(el, props) {
         this.el = el;
         this.props = props;
+        this.dispatch = d3.dispatch('navigation');
     }
 
     /**
@@ -30,6 +31,28 @@ export default class BasicChart {
             .attr('transform', `translate(${margin.left}, ${margin.top})`);
 
         return svg;
+    }
+
+    /**
+     * Retrieves the scales for our chart.
+     * Those are numerical time series scales on full extent of both dates and values.
+     */
+    getScales(state) {
+        const { height, width } = this.props;
+
+        const x = d3.time.scale()
+            .range([0, width])
+            .domain(d3.extent(state.data, d => d.date));
+
+        const y = d3.scale.linear()
+            .range([height, 0])
+            .domain(d3.extent(state.data, d => d.value))
+            .nice();
+
+        return {
+            x: x,
+            y: y,
+        };
     }
 
     /**

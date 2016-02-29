@@ -31,3 +31,21 @@
 .bar rect {
     fill: crimson;
 }
+
+.ticks-overlay .tick,
+.line-overlay .interact {
+    stroke: #646d66;
+    stroke-opacity: .1;
+    stroke-width: 30;
+    stroke-linecap: round;
+}
+
+.cursor {
+    fill: blue;
+}
+
+.cursor-line .tick {
+    stroke-width: 1.5;
+    stroke: blue;
+    shape-rendering: crispEdges;
+}
