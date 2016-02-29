@@ -7,8 +7,14 @@ import LineChart from '../charts/LineChart';
  * React bridge to a D3 chart.
  */
 export default React.createClass({
-    displayName: 'ExampleChart',
+    displayName: 'LineChart',
 
+    propTypes: {
+        data: React.PropTypes.arrayOf(React.PropTypes.shape({
+            date: React.PropTypes.instanceOf(Date).isRequired,
+            value: React.PropTypes.number.isRequired,
+        }).isRequired).isRequired,
+    },
 
     getInitialState() {
         return {
@@ -19,6 +25,9 @@ export default React.createClass({
     componentDidMount() {
         // First render of the D3 chart.
         this.createChart();
+
+        // Re-render from scratch on each resize.
+        window.addEventListener('resize', this.createChart);
     },
 
     // Never re-render since we are rendering using D3.
@@ -32,9 +41,8 @@ export default React.createClass({
 
     // Tear down the chart and remove the listeners.
     componentWillUnmount() {
-        const { chart } = this.state;
-
-        chart.destroy();
+        this.state.chart.destroy();
+        window.removeEventListener('resize', this.createChart);
     },
 
     getChartState(props = this.props) {
@@ -45,7 +53,7 @@ export default React.createClass({
 
     render() {
         return (
-            <div className="chart_container" ref="chart"></div>
+            <div ref="chart"></div>
         );
     },
 
@@ -57,14 +65,15 @@ export default React.createClass({
         }
 
         const margin = {
-            top: 0,
+            top: 20,
             right: 0,
             bottom: 40,
-            left: 0,
+            left: 40,
         };
 
+        const ratio = 3 / 2;
         const elWidth = Math.max(el.offsetWidth, 300);
-        const elHeight = elWidth / 1.5;
+        const elHeight = elWidth / ratio;
 
         const chartProps = {
             margin: margin,

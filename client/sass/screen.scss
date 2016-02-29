@@ -18,22 +18,13 @@
 @import 'components/grid';
 
 // Components
+@import 'components/charts';
 @import 'components/buttons';
-@import 'components/icons';
 @import 'components/forms';
-@import 'components/tags';
-@import 'components/modals';
-@import 'components/radio-picker';
-@import 'components/scrollable';
-@import 'components/autosuggest';
 
 
 // Page-specific
 // @import 'pages/home';
-
-
-// Widths should come near the end, so they're more specific
-@import 'components/widths';
 
 // Utility classes
 @import 'utilities';

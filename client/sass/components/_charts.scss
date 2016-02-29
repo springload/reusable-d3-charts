@@ -1,0 +1,19 @@
+// SVG root element
+.chart {
+    font-family: monospace;
+}
+
+// Axis tick and axis line.
+.axis .tick line,
+.axis path {
+    stroke-width: 1.5;
+    stroke: #646d66;
+    stroke-opacity: .3;
+    shape-rendering: crispEdges;
+}
+
+// Data line on the chart
+.line {
+    fill: none;
+    stroke: #00AAFF;
+}

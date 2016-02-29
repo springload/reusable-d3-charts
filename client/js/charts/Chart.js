@@ -1,7 +1,5 @@
 import d3 from 'd3';
 
-const dates = [new Date('2001'), new Date('2002'), new Date('2003'), new Date('2004'), new Date('2005'), new Date('2006'), new Date('2007'), new Date('2008'), new Date('2009'), new Date('2010'), new Date('2011'), new Date('2012'), new Date('2013'), new Date('2014'), new Date('2015'), new Date('2016')];
-
 /**
  * Abstract class for a D3 chart.
  */
@@ -10,7 +8,6 @@ export default class Chart {
     constructor(el, props) {
         this.el = el;
         this.props = props;
-        this.dispatch = d3.dispatch('navigation');
     }
 
     /**
@@ -37,18 +34,18 @@ export default class Chart {
 
     /**
      * Retrieves the scales for our chart.
-     * Those are numerical time series scales on full extent of both domains.
+     * Those are numerical time series scales on full extent of both dates and values.
      */
     getScales(state) {
         const { height, width } = this.props;
 
         const x = d3.time.scale()
             .range([0, width])
-            .domain(d3.extent(dates));
+            .domain(d3.extent(state.data, d => d.date));
 
         const y = d3.scale.linear()
             .range([height, 0])
-            .domain(d3.extent(state.data[0]))
+            .domain(d3.extent(state.data, d => d.value))
             .nice();
 
         return {
@@ -91,7 +88,7 @@ export default class Chart {
                 .append('tspan')
                 .attr('x', 0)
                 .attr('y', y)
-                .attr('dy', dy + 'em');
+                .attr('dy', `${dy}em`);
 
             while (word) {
                 line.push(word);
@@ -102,7 +99,7 @@ export default class Chart {
                 tspan = text.append('tspan')
                     .attr('x', 0)
                     .attr('y', y)
-                    .attr('dy', ++lineNumber * lineHeight + dy + 'em')
+                    .attr('dy', `${++lineNumber * lineHeight + dy}em`)
                     .text(word);
                 word = words.pop();
             }

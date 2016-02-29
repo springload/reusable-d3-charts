@@ -16,7 +16,7 @@ module.exports = {
         svg: path.join(sourcePath, 'svg'),
         images: path.join(distPath, 'images'),
         slug: 'my-site',
-        views: distPath,
+        views: '.',
     },
 
     PlzOptions: {

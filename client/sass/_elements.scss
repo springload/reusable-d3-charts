@@ -51,27 +51,3 @@ body {
 ::-moz-selection {
     background: $color-select; // Gecko Browsers
 }
-
-.app {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
-
-.line {
-    fill: none;
-    stroke: blue;
-}
-
-.line:last-of-type {
-    stroke: red;
-}
-
-.axis.y {
-    display: none;
-}
-
-.modal h3 {
-    text-align: left;
-}

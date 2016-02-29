@@ -7,10 +7,6 @@ export function humanNumber(num) {
 
 export const dollar = num => `$${num.toFixed(2)}`;
 
-export const price = num => num === 0 ? 'Free!' : dollar(num);
-
-export const yesNo = bool => bool ? 'Yes' : 'No';
-
 export function padNumber(num) {
     return `${num >= 0 && num <= 9 ? '0' : ''}${num}`;
 }

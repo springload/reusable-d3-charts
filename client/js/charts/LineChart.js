@@ -1,21 +1,15 @@
 import d3 from 'd3';
 import Chart from './Chart';
 
-const dates = [new Date('2001'), new Date('2002'), new Date('2003'), new Date('2004'), new Date('2005'), new Date('2006'), new Date('2007'), new Date('2008'), new Date('2009'), new Date('2010'), new Date('2011'), new Date('2012'), new Date('2013'), new Date('2014'), new Date('2015'), new Date('2016')];
-
 export default class LineChart extends Chart {
 
     create() {
         const { height } = this.props;
         const svg = this.createRoot();
 
-        // svg.append('g')
-        //     .attr('class', 'grid')
-        //     .attr('transform', 'translate(0,' + height + ')');
-
         svg.append('g')
             .attr('class', 'x axis')
-            .attr('transform', 'translate(0,' + height + ')');
+            .attr('transform', `translate(0,${height})`);
 
         svg.append('g')
             .attr('class', 'y axis');
@@ -68,16 +62,16 @@ export default class LineChart extends Chart {
         const svg = d3.select(this.el);
 
         const d3Line = d3.svg.line()
-            .x((d, i) => scales.x(dates[i]))
-            .y(d => scales.y(d));
+            .interpolate('basis')
+            .x(d => scales.x(d.date))
+            .y(d => scales.y(d.value));
 
         const lines = svg.selectAll('.lines');
         const line = lines.selectAll('.line')
-            .data(state.data);
+            .data([state.data]);
 
         line.enter().append('path')
-            .attr('class', 'line')
-            .style('stroke-width', 2);
+            .attr('class', 'line');
 
         line.transition()
             .attr('d', d3Line);

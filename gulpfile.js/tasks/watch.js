@@ -10,7 +10,7 @@ gulp.task('watch', ['js', 'css'], function() {
     });
 
     var justReload = [
-        path.join(config.paths.views, '**', '*.html'),
+        path.join(config.paths.views, 'index.html'),
     ];
 
     gulp.watch(justReload, bs.reload);
