@@ -18,8 +18,8 @@ else
     set -e
 
     NEW_FILES=$(git --no-pager diff --name-only --cached)
-    JS_FILES=$(echo "$NEW_FILES" | { grep core/static_src/js || true; })
-    SASS_FILES=$(echo "$NEW_FILES" | { grep core/static_src/sass || true; })
+    JS_FILES=$(echo "$NEW_FILES" | { grep client/js || true; })
+    SASS_FILES=$(echo "$NEW_FILES" | { grep client/sass || true; })
 
     if [ -n "$JS_FILES" ];
     then
