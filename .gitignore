@@ -73,3 +73,5 @@ bower_components
 # -------------------------------------------------
 /core/static/js/*
 /dist/
+public/js/
+public/css/
