@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import LineChart from '../charts/LineChart';
+import BasicLineChart from '../charts/BasicLineChart';
 
 /**
  * React bridge to a D3 chart.
  */
 export default React.createClass({
-    displayName: 'LineChart',
+    displayName: 'BasicLineChart',
 
     propTypes: {
         data: React.PropTypes.arrayOf(React.PropTypes.shape({
@@ -86,7 +86,7 @@ export default React.createClass({
 
         // Initialise the chart, then render it without transitions.
         this.setState({
-            chart: new LineChart(el, chartProps),
+            chart: new BasicLineChart(el, chartProps),
         }, () => {
             const { chart } = this.state;
 

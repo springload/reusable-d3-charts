@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { humanNumber, padNumber, monthName } from '../utils/format';
+import { humanNumber, padNumber, monthName } from '../../utils/format';
 
 describe('format', () => {
     describe('#humanNumber', () => {

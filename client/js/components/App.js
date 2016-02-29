@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Export from '../components/Export';
-import LineChart from '../components/LineChart';
+import BasicLineChart from '../components/BasicLineChart';
 
 import datasets from '../datasets';
 
@@ -38,7 +38,7 @@ export default React.createClass({
                 <h1>Reusable D3 charts</h1>
                 <div className="grid">
                     <div className="medium-one-half large-two-thirds gutters">
-                        <LineChart id="line-chart-wrapper" data={activeDatasets[0].data}/>
+                        <BasicLineChart id="basic-line-chart-wrapper" data={activeDatasets[0].data}/>
                         <h4>{activeDatasets[0].label}</h4>
                     </div>
                     <div className="medium-one-half large-one-third gutters">
@@ -53,7 +53,7 @@ export default React.createClass({
                             onChange={this.changeActiveDataset.bind(this, 0)}
                             onClick={this.changeActiveDataset.bind(this, 0)}
                         />
-                        <Export targetId="line-chart-wrapper" dataset={activeDatasets[0]}/>
+                        <Export targetId="basic-line-chart-wrapper" dataset={activeDatasets[0]}/>
                     </div>
                 </div>
             </div>
