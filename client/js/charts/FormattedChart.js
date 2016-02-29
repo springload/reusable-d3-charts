@@ -80,7 +80,6 @@ export default class FormattedChart {
             .scale(scales.y)
             .orient('left')
             .tickFormat(d3.format('s'))
-            .tickValues(d3.extent(state.data, d => d.value))
             .outerTickSize(0);
 
         return {
