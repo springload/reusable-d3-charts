@@ -14,7 +14,7 @@ export default React.createClass({
             date: React.PropTypes.instanceOf(Date).isRequired,
             value: React.PropTypes.number.isRequired,
         }).isRequired).isRequired,
-        className: React.PropTypes.string,
+        id: React.PropTypes.string.isRequired,
     },
 
     getInitialState() {
@@ -53,10 +53,10 @@ export default React.createClass({
     },
 
     render() {
-        const { className } = this.props;
+        const { id } = this.props;
 
         return (
-            <div className={className} ref="chart"></div>
+            <div id={id} ref="chart"></div>
         );
     },
 

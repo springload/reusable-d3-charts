@@ -7,7 +7,7 @@ export default React.createClass({
     displayName: 'Export',
 
     propTypes: {
-        targetClassName: React.PropTypes.string.isRequired,
+        targetId: React.PropTypes.string.isRequired,
     },
 
     _makeFilename(extension) {
@@ -17,13 +17,13 @@ export default React.createClass({
 
     downloadPNG() {
         const filename = this._makeFilename('png');
-        const node = document.querySelector(`.${this.props.targetClassName}`).querySelector('svg');
+        const node = document.querySelector(`#${this.props.targetId} svg`);
         saveSvgAsPng.saveSvgAsPng(node, filename, { scale: 2.0 });
     },
 
     downloadSVG() {
         const filename = this._makeFilename('svg');
-        const node = document.querySelector(`.${this.props.targetClassName}`).querySelector('svg');
+        const node = document.querySelector(`#${this.props.targetId} svg`);
 
         saveSvgAsPng.svgAsDataUri(node, {}, (uri) => {
             var a = document.createElement('a');
@@ -41,8 +41,8 @@ export default React.createClass({
     render() {
         return (
             <div>
-                <button onClick={this.downloadPNG}>Download Image</button>
-                <button onClick={this.downloadSVG}>Download SVG</button>
+                <button className="btn btn--block" onClick={this.downloadPNG}>Download Image</button>
+                <button className="btn btn--block" onClick={this.downloadSVG}>Download SVG</button>
             </div>
         );
     },

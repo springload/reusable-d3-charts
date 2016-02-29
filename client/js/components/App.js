@@ -5,39 +5,57 @@ import LineChart from '../components/LineChart';
 
 import datasets from '../datasets';
 
+const STEP = 1;
+const MIN = 0;
+const MAX = datasets.length - STEP;
+
 export default React.createClass({
     displayName: 'App',
 
     getInitialState() {
         return {
-            activeDataset: 0,
+            activeDatasetIndexes: [0],
         };
     },
 
-    changeActiveDataset(e) {
+    changeActiveDataset(index, e) {
+        const { activeDatasetIndexes } = this.state;
+        const newActiveDatasets = activeDatasetIndexes.slice();
+
+        newActiveDatasets[index] = parseInt(e.target.value, 10);
+
         this.setState({
-            activeDataset: parseInt(e.target.value, 10),
+            activeDatasetIndexes: newActiveDatasets,
         });
     },
 
     render() {
-        const { activeDataset } = this.state;
+        const { activeDatasetIndexes } = this.state;
+        const activeDatasets = activeDatasetIndexes.map(i => datasets[i]);
 
         return (
             <div className="app">
-                <input
-                    type="range"
-                    value={activeDataset}
-                    max={datasets.length - 1}
-                    min={0}
-                    step={1}
-                    onChange={this.changeActiveDataset}
-                    onClick={this.changeActiveDataset}
-                />
-
-                <LineChart className="line-chart-wrapper" data={datasets[activeDataset].data}/>
-
-                <Export targetClassName="line-chart-wrapper" dataset={datasets[activeDataset]}/>
+                <h1>Reusable D3 charts</h1>
+                <div className="grid">
+                    <div className="two-thirds">
+                        <LineChart id="line-chart-wrapper" data={activeDatasets[0].data}/>
+                    </div>
+                    <div className="one-third gutters">
+                        <h3>Basic line chart</h3>
+                        <input
+                            type="range"
+                            className="full"
+                            value={activeDatasetIndexes[0]}
+                            max={MAX}
+                            min={MIN}
+                            step={STEP}
+                            onChange={this.changeActiveDataset.bind(this, 0)}
+                            onClick={this.changeActiveDataset.bind(this, 0)}
+                        />
+                        <Export targetId="line-chart-wrapper" dataset={activeDatasets[0]}/>
+                        <h4>{activeDatasets[0].label}</h4>
+                    </div>
+                </div>
             </div>
         );
     },
