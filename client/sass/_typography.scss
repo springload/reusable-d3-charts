@@ -1,0 +1,97 @@
+// -----------------------------------------------------------------------------
+// Typography
+// -----------------------------------------------------------------------------
+
+
+%font-smoothing {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+%font-smoothing-off {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+}
+
+
+%serif {
+    font-family: $font-family-serif;
+}
+
+%sans-serif {
+    font-family: $font-family-sans-serif;
+}
+
+%body-type-size {
+    font-size: rem($font-size-base);
+    @extend %font-smoothing;
+
+    @include medium {
+        font-size: rem($font-size-base + 2);
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    @extend %font-smoothing;
+    line-height: $line-height-headline;
+    &:first-child {
+        margin-top: 0;
+    }
+    > a {
+        font-weight: inherit;
+        text-decoration: none;
+    }
+}
+
+%h1,
+.h1,
+h1 {
+    font-size: rem(28);
+
+    @include medium {
+        font-size: rem(32);
+    }
+}
+
+p,
+ul,
+ol,
+dl,
+address {
+    margin-top: 0;
+}
+
+p,
+li,
+label,
+td,
+th,
+input,
+textarea,
+button,
+select,
+blockquote,
+cite, {
+    @extend %body-type-size;
+}
+
+p:empty {
+    display: none;
+}
+
+.strong,
+strong,
+b {
+    font-weight: $font-weight-bold;
+}
+
+.italic,
+i,
+em {
+    font-style: italic;
+}

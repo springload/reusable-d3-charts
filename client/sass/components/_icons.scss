@@ -1,0 +1,19 @@
+.i {
+    $spacing-icon: .25em;
+
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+}
+
+svg > use {
+    fill: currentColor;
+}
+
+.i-black {
+    fill: $color-black;
+}
+
+.i-white {
+    fill: $color-white;
+}
