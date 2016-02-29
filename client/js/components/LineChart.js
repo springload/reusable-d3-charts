@@ -14,6 +14,7 @@ export default React.createClass({
             date: React.PropTypes.instanceOf(Date).isRequired,
             value: React.PropTypes.number.isRequired,
         }).isRequired).isRequired,
+        className: React.PropTypes.string,
     },
 
     getInitialState() {
@@ -52,8 +53,10 @@ export default React.createClass({
     },
 
     render() {
+        const { className } = this.props;
+
         return (
-            <div ref="chart"></div>
+            <div className={className} ref="chart"></div>
         );
     },
 

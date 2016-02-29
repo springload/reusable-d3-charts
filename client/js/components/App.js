@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Export from '../components/Export';
 import LineChart from '../components/LineChart';
 
 import datasets from '../datasets';
@@ -34,7 +35,9 @@ export default React.createClass({
                     onClick={this.changeActiveDataset}
                 />
 
-                <LineChart data={datasets[activeDataset].data}/>
+                <LineChart className="line-chart-wrapper" data={datasets[activeDataset].data}/>
+
+                <Export targetClassName="line-chart-wrapper" dataset={datasets[activeDataset]}/>
             </div>
         );
     },
