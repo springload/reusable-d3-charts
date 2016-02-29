@@ -51,7 +51,6 @@ export default React.createClass({
     },
 
     getChartState(props = this.props) {
-        console.log(this.state.active);
         return {
             active: this.state.active,
             data: props.data,
