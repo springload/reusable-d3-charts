@@ -3,7 +3,7 @@ import d3 from 'd3';
 /**
  * Abstract class for a D3 chart.
  */
-export default class Chart {
+export default class BasicChart {
 
     constructor(el, props) {
         this.el = el;

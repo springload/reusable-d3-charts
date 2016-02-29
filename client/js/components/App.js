@@ -2,6 +2,7 @@ import React from 'react';
 
 import Export from '../components/Export';
 import BasicLineChart from '../components/BasicLineChart';
+import FormattedChart from '../components/FormattedChart';
 
 import datasets from '../datasets';
 
@@ -14,7 +15,7 @@ export default React.createClass({
 
     getInitialState() {
         return {
-            activeDatasetIndexes: [0],
+            activeDatasetIndexes: [0, 1],
         };
     },
 
@@ -54,6 +55,27 @@ export default React.createClass({
                             onClick={this.changeActiveDataset.bind(this, 0)}
                         />
                         <Export targetId="basic-line-chart-wrapper" dataset={activeDatasets[0]}/>
+                    </div>
+                </div>
+
+                <div className="grid">
+                    <div className="medium-one-half large-two-thirds gutters">
+                        <FormattedChart id="formatted-chart-wrapper" data={activeDatasets[1].data}/>
+                        <h4>{activeDatasets[1].label}</h4>
+                    </div>
+                    <div className="medium-one-half large-one-third gutters">
+                        <a href="#" className="u-block"><h3>Formatted line chart</h3></a>
+                        <input
+                            type="range"
+                            className="full"
+                            value={activeDatasetIndexes[1]}
+                            max={MAX}
+                            min={MIN}
+                            step={STEP}
+                            onChange={this.changeActiveDataset.bind(this, 1)}
+                            onClick={this.changeActiveDataset.bind(this, 1)}
+                        />
+                        <Export targetId="formatted-chart-wrapper" dataset={activeDatasets[1]}/>
                     </div>
                 </div>
             </div>
