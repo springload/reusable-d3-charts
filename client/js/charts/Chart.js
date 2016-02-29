@@ -33,28 +33,6 @@ export default class Chart {
     }
 
     /**
-     * Retrieves the scales for our chart.
-     * Those are numerical time series scales on full extent of both dates and values.
-     */
-    getScales(state) {
-        const { height, width } = this.props;
-
-        const x = d3.time.scale()
-            .range([0, width])
-            .domain(d3.extent(state.data, d => d.date));
-
-        const y = d3.scale.linear()
-            .range([height, 0])
-            .domain(d3.extent(state.data, d => d.value))
-            .nice();
-
-        return {
-            x: x,
-            y: y,
-        };
-    }
-
-    /**
      * To override. Populates the initial renderings with content.
      */
     update() {}

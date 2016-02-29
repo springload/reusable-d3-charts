@@ -57,3 +57,12 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
+
+a {
+    color: $color-links;
+    text-decoration: none;
+
+    &:hover {
+        color: $color-links-hover;
+    }
+}

@@ -5,11 +5,16 @@
 
 // Axis tick and axis line.
 .axis .tick line,
-.axis path {
+.axis path,
+.domain {
     stroke-width: 1.5;
     stroke: #646d66;
     stroke-opacity: .3;
     shape-rendering: crispEdges;
+}
+
+.domain {
+    fill: none;
 }
 
 // Data line on the chart
