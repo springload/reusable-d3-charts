@@ -35,7 +35,4 @@ npm run test:unit
 
 npm run test:integration
 
-# Link checking
-hyperlink "http://$TEST_DOMAIN/" || echo ok
-
 exit 0
