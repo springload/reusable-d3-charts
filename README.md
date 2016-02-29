@@ -14,7 +14,7 @@ reusable-d3-charts [![Build Status](https://travis-ci.org/springload/reusable-d3
      2000         2005          2010          2015         2020
 ```
 
-## Why should I use those instead of <high-level abstraction over D3 of the day>?
+## Why should I use those instead of `<high-level abstraction over D3 of the day>`?
 
 > TL;DR; D3 allows full customisability and is built on web standards.
 
@@ -40,7 +40,9 @@ Here are good reads:
 
 ## Reusing one of the charts
 
-TODO
+**Those examples are meant to be copied and pasted into your project's code**. You can then update their rendering code so that it suits the precise need of your project.
+
+Most of the examples are divided into two files: a base class and one that inherits from it. If you intend to use multiple charts, they will most likely share some code – this code should be in the base class.
 
 ## Contributing
 

@@ -174,14 +174,9 @@ export default class LineChart extends BasicChart {
         const cursor = cursors.selectAll('.cursor')
             .data([state.data[state.active]]);
 
-        const cursorSize = 200;
-
         const symbol = d3.svg.symbol()
-            .type((d) => {
-                const shape = ['circle', 'square', 'triangle-down', 'triangle-up'];
-                return shape[d.theme];
-            })
-            .size(() => cursorSize);
+            .type(() => 'triangle-up')
+            .size(() => 50);
 
         cursor.enter().append('path');
 

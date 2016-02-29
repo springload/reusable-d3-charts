@@ -47,7 +47,7 @@ export default React.createClass({
                         <h4>{activeDatasets[0].label}</h4>
                     </div>
                     <div className="medium-one-half large-one-third gutters">
-                        <a href="#" className="u-block"><h3>Basic line chart</h3></a>
+                        <a href="https://github.com/springload/reusable-d3-charts/blob/master/client/js/charts/BasicLineChart.js" className="u-block"><h3>Basic line chart</h3></a>
                         <input
                             type="range"
                             className="full"
@@ -68,7 +68,7 @@ export default React.createClass({
                         <h4>{activeDatasets[1].label}</h4>
                     </div>
                     <div className="medium-one-half large-one-third gutters">
-                        <a href="#" className="u-block"><h3>Formatted line chart</h3></a>
+                        <a href="https://github.com/springload/reusable-d3-charts/blob/master/client/js/charts/FormattedChart.js" className="u-block"><h3>Formatted line chart</h3></a>
                         <input
                             type="range"
                             className="full"
@@ -89,7 +89,7 @@ export default React.createClass({
                         <h4>{activeDatasets[2].label}</h4>
                     </div>
                     <div className="medium-one-half large-one-third gutters">
-                        <a href="#" className="u-block"><h3>Area chart</h3></a>
+                        <a href="https://github.com/springload/reusable-d3-charts/blob/master/client/js/charts/AreaChart.js" className="u-block"><h3>Area chart</h3></a>
                         <input
                             type="range"
                             className="full"
@@ -110,7 +110,7 @@ export default React.createClass({
                         <h4>{activeDatasets[3].label}</h4>
                     </div>
                     <div className="medium-one-half large-one-third gutters">
-                        <a href="#" className="u-block"><h3>Progress chart</h3></a>
+                        <a href="https://github.com/springload/reusable-d3-charts/blob/master/client/js/charts/ProgressChart.js" className="u-block"><h3>Progress chart</h3></a>
                         <input
                             type="range"
                             className="full"
@@ -131,7 +131,7 @@ export default React.createClass({
                         <h4>{activeDatasets[4].label}</h4>
                     </div>
                     <div className="medium-one-half large-one-third gutters">
-                        <a href="#" className="u-block"><h3>Bar chart</h3></a>
+                        <a href="https://github.com/springload/reusable-d3-charts/blob/master/client/js/charts/BarChart.js" className="u-block"><h3>Bar chart</h3></a>
                         <input
                             type="range"
                             className="full"
@@ -152,7 +152,7 @@ export default React.createClass({
                         <h4>{activeDatasets[5].label}</h4>
                     </div>
                     <div className="medium-one-half large-one-third gutters">
-                        <a href="#" className="u-block"><h3>Interactive line chart</h3></a>
+                        <a href="https://github.com/springload/reusable-d3-charts/blob/master/client/js/charts/InteractiveLineChart.js" className="u-block"><h3>Interactive line chart</h3></a>
                         <input
                             type="range"
                             className="full"
