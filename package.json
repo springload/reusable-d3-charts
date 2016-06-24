@@ -46,9 +46,12 @@
   },
   "dependencies": {
     "d3": "^3.5.14",
+    "keymirror": "^0.1.1",
     "normalize.css": "^4.1.1",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
+    "react-simpler-select": "^1.1.0",
+    "react-svg-icon": "^1.0.0",
     "save-svg-as-png": "^1.0.2"
   },
   "scripts": {

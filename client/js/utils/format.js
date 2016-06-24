@@ -1,3 +1,5 @@
+const EN_DASH = '\u2013';
+
 export function humanNumber(num) {
     const parts = num.toString().split('.');
     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -18,4 +20,8 @@ export function monthName(monthNumber = (new Date()).getMonth()) {
     ];
 
     return names[monthNumber];
+}
+
+export function formatRange(range, separator = EN_DASH) {
+    return `${range[0]}${separator}${range[1]}`;
 }

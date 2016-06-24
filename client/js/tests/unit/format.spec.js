@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { humanNumber, padNumber, monthName } from '../../utils/format';
+import { humanNumber, padNumber, monthName, formatRange } from '../../utils/format';
 
 describe('format', () => {
     describe('#humanNumber', () => {
@@ -39,6 +39,20 @@ describe('format', () => {
         it('converts a month number to a string, from 0 to 11', () => {
             expect(monthName(0)).to.equal('January');
             expect(monthName(11)).to.equal('December');
+        });
+    });
+
+    describe('#formatRange', () => {
+        it('exists', () => {
+            expect(formatRange).to.be.a('function');
+        });
+
+        it('converts a range to a string', () => {
+            expect(formatRange([100, 200])).to.equal('100\u2013200');
+        });
+
+        it('custom separator', () => {
+            expect(formatRange([100, 200], '-')).to.equal('100-200');
         });
     });
 });
