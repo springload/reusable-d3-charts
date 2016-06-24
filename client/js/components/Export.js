@@ -1,41 +1,28 @@
 import React from 'react';
-import d3 from 'd3';
 
-import saveSvgAsPng from 'save-svg-as-png';
+import download from '../api/download';
 
 export default React.createClass({
     displayName: 'Export',
 
     propTypes: {
         targetId: React.PropTypes.string.isRequired,
+        dataset: React.PropTypes.object.isRequired,
     },
 
     _makeFilename(extension) {
-        var filename = this.props.dataset.label;
-        return [(filename + '_export').replace(/\s/g, '_'), extension].join('.');
+        const filename = this.props.dataset.label;
+        return [(`${filename}_export`).replace(/\s/g, '_'), extension].join('.');
     },
 
     downloadPNG() {
         const filename = this._makeFilename('png');
-        const node = document.querySelector(`#${this.props.targetId} svg`);
-        saveSvgAsPng.saveSvgAsPng(node, filename, { scale: 2.0 });
+        download.downloadPNG(this.props.targetId, filename);
     },
 
     downloadSVG() {
         const filename = this._makeFilename('svg');
-        const node = document.querySelector(`#${this.props.targetId} svg`);
-
-        saveSvgAsPng.svgAsDataUri(node, {}, (uri) => {
-            var a = document.createElement('a');
-            a.download = filename;
-            a.href = uri;
-            //a.href = this.createSVGFile(node);
-            document.body.appendChild(a);
-            a.addEventListener('click', (e) => {
-                a.parentNode.removeChild(a);
-            });
-            a.click();
-        });
+        download.downloadSVG(this.props.targetId, filename);
     },
 
     render() {
