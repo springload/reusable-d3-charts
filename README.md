@@ -44,19 +44,6 @@ Here are good reads:
 
 Most of the examples are divided into two files: a base class and one that inherits from it. If you intend to use multiple charts, they will most likely share some code – this code should be in the base class.
 
-## Chart download
-
-The download feature is built with a thin [`api/download.js` layer](https://github.com/springload/reusable-d3-charts/blob/master/client/js/api/download.js) which relies on [`saveSvgAsPng`](https://github.com/exupero/saveSvgAsPng). Browser support is patchy, but the API layer takes care of feature-detecting / browser-detecting what works and what doesn't to display warning messages to the end user.
-
-### Known issues
-
-- Does not support custom web fonts
-- Safari 9 / iOS 9 Safari – Image export does not have the right filename, and opens as file in separate window  (see http://caniuse.com/#feat=download)
-- IE11 – PNG export does not work (hidden behind error message suggesting SVG use)
-- IE11 – Image export works but does not display embedded symbols (warning is displayed to the user).
-- Android browser – Image export does not work (soft fail with error message)
-
-
 ## Contributing
 
 ### Installation
@@ -129,8 +116,7 @@ git push origin master
 git checkout gh-pages
 git merge master
 npm run dist
-git add .
-git commit -m 'Release new version'
+git commit -am 'Release new version'
 git push origin gh-pages
 # And get back to master!
 git checkout master
