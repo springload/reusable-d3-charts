@@ -107,17 +107,11 @@ open coverage/lcov-report/index.html
 
 ```sh
 # From the project's root.
-# First make sure your master is up to date.
+# Make sure your master is up to date.
 git fetch --all
 git checkout master
 git pull
 git push origin master
 # Then push the new changes
-git checkout gh-pages
-git merge master
-npm run dist
-git commit -am 'Release new version'
-git push origin gh-pages
-# And get back to master!
-git checkout master
+npm run deploy
 ```

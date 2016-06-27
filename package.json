@@ -73,6 +73,7 @@
     "dist": "NODE_ENV=production gulp build",
     "css": "gulp css",
     "js": "gulp js",
-    "watch": "gulp watch"
+    "watch": "gulp watch",
+    "deploy": "./bin/deploy.sh"
   }
 }
