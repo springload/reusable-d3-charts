@@ -2,13 +2,14 @@ import React from 'react';
 
 import Export from '../components/Export';
 import TimeFilter from '../components/TimeFilter';
+import ChartWrapper from '../components/ChartWrapper';
+import InteractiveChartWrapper from '../components/InteractiveChartWrapper';
 
-import BasicLineChart from '../components/BasicLineChart';
-import FormattedChart from '../components/FormattedChart';
-import AreaChart from '../components/AreaChart';
-import ProgressChart from '../components/ProgressChart';
-import BarChart from '../components/BarChart';
-import InteractiveLineChart from '../components/InteractiveLineChart';
+import BasicLineChart from '../charts/BasicLineChart';
+import AreaChart from '../charts/AreaChart';
+import ProgressChart from '../charts/ProgressChart';
+import BarChart from '../charts/BarChart';
+import InteractiveLineChart from '../charts/InteractiveLineChart';
 
 import datasets from '../datasets';
 
@@ -79,7 +80,11 @@ export default React.createClass({
                 <h1>Reusable D3 charts</h1>
                 <div className="grid">
                     <div className="medium-one-half large-two-thirds gutters">
-                        <BasicLineChart id="basic-line-chart-wrapper" data={activeDatasets[0].timeSeries.getMeasures(timeFilters[0].from, timeFilters[0].to)} />
+                        <ChartWrapper
+                            Chart={BasicLineChart}
+                            id="basic-line-chart-wrapper"
+                            data={activeDatasets[0].timeSeries.getMeasures(timeFilters[0].from, timeFilters[0].to)}
+                        />
                         <h4>{activeDatasets[0].label}</h4>
                     </div>
                     <div className="medium-one-half large-one-third gutters">
@@ -108,39 +113,8 @@ export default React.createClass({
 
                 <div className="grid">
                     <div className="medium-one-half large-two-thirds gutters">
-                        <FormattedChart
-                            id="formatted-chart-wrapper"
-                            data={activeDatasets[1].timeSeries.getMeasures(timeFilters[1].from, timeFilters[1].to)}
-                        />
-                        <h4>{activeDatasets[1].label}</h4>
-                    </div>
-                    <div className="medium-one-half large-one-third gutters">
-                        <a href="https://github.com/springload/reusable-d3-charts/blob/master/client/js/charts/FormattedChart.js" className="u-block"><h3>Formatted line chart</h3></a>
-                        <input
-                            type="range"
-                            className="full"
-                            value={activeDatasetIndexes[1]}
-                            max={MAX}
-                            min={MIN}
-                            step={STEP}
-                            onChange={this.changeActiveDataset.bind(this, 1)}
-                            onClick={this.changeActiveDataset.bind(this, 1)}
-                        />
-                        <TimeFilter
-                            filterFrom={timeFilters[1].from}
-                            filterTo={timeFilters[1].to}
-                            availableYears={activeDatasets[1].timeSeries.getAvailableYears()}
-                            handleChangeFrom={this.handleChangeFrom.bind(this, 1)}
-                            handleChangeTo={this.handleChangeTo.bind(this, 1)}
-                            resetTimeFilter={this.resetTimeFilter.bind(this, 1)}
-                        />
-                        <Export targetId="formatted-chart-wrapper" dataset={activeDatasets[1]}/>
-                    </div>
-                </div>
-
-                <div className="grid">
-                    <div className="medium-one-half large-two-thirds gutters">
-                        <AreaChart
+                        <ChartWrapper
+                            Chart={AreaChart}
                             id="area-chart-wrapper"
                             data={activeDatasets[2].timeSeries.getMeasures(timeFilters[2].from, timeFilters[2].to)}
                         />
@@ -172,7 +146,8 @@ export default React.createClass({
 
                 <div className="grid">
                     <div className="medium-one-half large-two-thirds gutters">
-                        <ProgressChart
+                        <ChartWrapper
+                            Chart={ProgressChart}
                             id="progress-chart-wrapper"
                             data={activeDatasets[3].timeSeries.getMeasures(timeFilters[3].from, timeFilters[3].to)}
                         />
@@ -204,7 +179,8 @@ export default React.createClass({
 
                 <div className="grid">
                     <div className="medium-one-half large-two-thirds gutters">
-                        <BarChart
+                        <ChartWrapper
+                            Chart={BarChart}
                             id="bar-chart-wrapper"
                             data={activeDatasets[4].timeSeries.getMeasures(timeFilters[4].from, timeFilters[4].to)}
                         />
@@ -236,9 +212,11 @@ export default React.createClass({
 
                 <div className="grid">
                     <div className="medium-one-half large-two-thirds gutters">
-                        <InteractiveLineChart
+                        <InteractiveChartWrapper
+                            Chart={InteractiveLineChart}
                             id="interactive-chart-wrapper"
                             data={activeDatasets[5].timeSeries.getMeasures(timeFilters[5].from, timeFilters[5].to)}
+                            active={4}
                         />
                         <h4>{activeDatasets[5].label}</h4>
                     </div>

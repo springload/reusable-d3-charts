@@ -1,15 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import BasicLineChart from '../charts/BasicLineChart';
-
 /**
  * React bridge to a D3 chart.
  */
 export default React.createClass({
-    displayName: 'BasicLineChart',
+    displayName: 'ChartWrapper',
 
     propTypes: {
+        Chart: React.PropTypes.func.isRequired,
         data: React.PropTypes.arrayOf(React.PropTypes.shape({
             date: React.PropTypes.instanceOf(Date).isRequired,
             value: React.PropTypes.number.isRequired,
@@ -23,12 +22,9 @@ export default React.createClass({
         };
     },
 
+    // First render of the D3 chart.
     componentDidMount() {
-        // First render of the D3 chart.
         this.createChart();
-
-        // Re-render from scratch on each resize.
-        window.addEventListener('resize', this.createChart);
     },
 
     // Never re-render since we are rendering using D3.
@@ -42,14 +38,7 @@ export default React.createClass({
 
     // Tear down the chart and remove the listeners.
     componentWillUnmount() {
-        this.state.chart.destroy();
-        window.removeEventListener('resize', this.createChart);
-    },
-
-    getChartState(props = this.props) {
-        return {
-            data: props.data,
-        };
+        this.destroyChart();
     },
 
     render() {
@@ -60,40 +49,41 @@ export default React.createClass({
         );
     },
 
+    getChartState(props = this.props) {
+        return {
+            data: props.data,
+        };
+    },
+
     createChart() {
+        const { Chart } = this.props;
         const el = ReactDOM.findDOMNode(this.refs.chart);
 
+        this.destroyChart();
+
+        // Initialise the chart, then render it without transitions.
+        this.setState({
+            chart: new Chart(el, {
+                width: Math.max(el.offsetWidth, 300),
+            }),
+        }, () => {
+            const { chart } = this.state;
+
+            chart.create();
+            chart.update(this.getChartState());
+
+            chart.preventTransitions();
+
+            // Re-render from scratch on each resize.
+            global.addEventListener('resize', this.createChart);
+        });
+    },
+
+    destroyChart() {
         if (this.state.chart) {
             this.state.chart.destroy();
         }
 
-        const margin = {
-            top: 20,
-            right: 0,
-            bottom: 40,
-            left: 40,
-        };
-
-        const ratio = 3 / 2;
-        const elWidth = Math.max(el.offsetWidth, 300);
-        const elHeight = elWidth / ratio;
-
-        const chartProps = {
-            margin: margin,
-            width: elWidth - margin.left - margin.right,
-            height: elHeight - margin.top - margin.bottom,
-        };
-
-        // Initialise the chart, then render it without transitions.
-        this.setState({
-            chart: new BasicLineChart(el, chartProps),
-        }, () => {
-            const { chart } = this.state;
-
-            chart.create(this.getChartState());
-            chart.update(this.getChartState());
-
-            chart.preventTransitions();
-        });
+        global.removeEventListener('resize', this.createChart);
     },
 });

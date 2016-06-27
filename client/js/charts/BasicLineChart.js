@@ -3,6 +3,20 @@ import BasicChart from './BasicChart';
 
 export default class LineChart extends BasicChart {
 
+    constructor(el, props) {
+        super(el, props);
+
+        this.props.margin = {
+            top: 20,
+            right: 0,
+            bottom: 40,
+            left: 40,
+        };
+
+        this.props.width = props.width - this.props.margin.left - this.props.margin.right;
+        this.props.height = props.width / (3 / 2) - this.props.margin.top - this.props.margin.bottom;
+    }
+
     create() {
         const { height } = this.props;
         const svg = this.createRoot();

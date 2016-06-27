@@ -3,6 +3,20 @@ import MoneyChart from './MoneyChart';
 
 export default class AreaChart extends MoneyChart {
 
+    constructor(el, props) {
+        super(el, props);
+
+        this.props.margin = {
+            top: 20,
+            right: 10,
+            bottom: 40,
+            left: 40,
+        };
+
+        this.props.width = props.width - this.props.margin.left - this.props.margin.right;
+        this.props.height = props.width / (3 / 2) - this.props.margin.top - this.props.margin.bottom;
+    }
+
     create() {
         const svg = super.createRoot();
 
@@ -41,14 +55,21 @@ export default class AreaChart extends MoneyChart {
     }
 
     update(state) {
-        const scales = this._scales(state.data);
+        const data = state.data.map((d, i) => {
+            return {
+                value: d.value / 100,
+                period: i,
+            };
+        });
 
-        this._drawAxis(scales);
-        this._drawAreas(scales, state.data);
-        this._drawLines(scales, state.data);
+        const scales = this.getScales(data);
+
+        this.drawAxis(scales);
+        this.drawAreas(scales, data);
+        this.drawLines(scales, data);
     }
 
-    _scales(data) {
+    getScales(data) {
         const x = d3.scale.linear()
             .range([0, this.props.width])
             .domain(d3.extent(data, d => d.period));
@@ -60,7 +81,7 @@ export default class AreaChart extends MoneyChart {
         return { x: x, y: y };
     }
 
-    _drawAreas(scales, data) {
+    drawAreas(scales, data) {
         const areas = d3.select(this.el).selectAll('.areas');
 
         const interpolation = d3.svg.area()
@@ -82,7 +103,7 @@ export default class AreaChart extends MoneyChart {
             .remove();
     }
 
-    _drawLines(scales, data) {
+    drawLines(scales, data) {
         const lines = d3.select(this.el).selectAll('.lines');
 
         const lineFunction = d3.svg.line()
@@ -104,7 +125,7 @@ export default class AreaChart extends MoneyChart {
             .remove();
     }
 
-    _drawAxis(scales) {
+    drawAxis(scales) {
         const xAxis = d3.svg.axis()
             .orient('bottom')
             .scale(scales.x);

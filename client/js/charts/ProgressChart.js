@@ -3,6 +3,20 @@ import MoneyChart from './MoneyChart';
 
 export default class ProgressChart extends MoneyChart {
 
+    constructor(el, props) {
+        super(el, props);
+
+        this.props.margin = {
+            top: 100,
+            right: 0,
+            bottom: 100,
+            left: 0,
+        };
+
+        this.props.width = props.width - this.props.margin.left - this.props.margin.right;
+        this.props.height = 250 - this.props.margin.top - this.props.margin.bottom;
+    }
+
     // First step of the D3 rendering.
     create() {
         const svg = super.createRoot();
@@ -17,7 +31,7 @@ export default class ProgressChart extends MoneyChart {
 
     // Main D3 rendering, that should be redone when the data updates.
     update(state) {
-        const scales = this._scales(state.data);
+        const scales = this.getScales(state.data);
 
         const data = state.data.slice(0, 2).map((d, i) => {
             /* eslint-disable */
@@ -26,12 +40,12 @@ export default class ProgressChart extends MoneyChart {
             return d;
         });
 
-        this._drawBar(scales, data);
-        this._drawLabel(scales, data.filter((d, i) => i < 2));
+        this.drawBar(scales, data);
+        this.drawLabel(scales, data.filter((d, i) => i < 2));
     }
 
     // Generates our D3 scales.
-    _scales(data) {
+    getScales(data) {
         const x = d3.scale.linear()
             .rangeRound([0, this.props.width])
             .domain(d3.extent(data, d => d.value));
@@ -43,7 +57,7 @@ export default class ProgressChart extends MoneyChart {
     }
 
     // Draws our bars and rectangles for our bar chart.
-    _drawBar(scales, data) {
+    drawBar(scales, data) {
         const bar = d3.select(this.el).selectAll('.bar');
 
         const rect = bar.selectAll('rect')
@@ -65,7 +79,7 @@ export default class ProgressChart extends MoneyChart {
     }
 
     // Draws the label on top of the bars.
-    _drawLabel(scales, val) {
+    drawLabel(scales, val) {
         const numbers = d3.format('%')(val[0].value);
         const label = d3.select(this.el).selectAll('.bar-label');
 

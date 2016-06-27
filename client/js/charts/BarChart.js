@@ -3,6 +3,20 @@ import MoneyChart from './MoneyChart';
 
 export default class BarChart extends MoneyChart {
 
+    constructor(el, props) {
+        super(el, props);
+
+        this.props.margin = {
+            top: 20,
+            right: 10,
+            bottom: 40,
+            left: 40,
+        };
+
+        this.props.width = props.width - this.props.margin.left - this.props.margin.right;
+        this.props.height = props.width / (3 / 2) - this.props.margin.top - this.props.margin.bottom;
+    }
+
     create() {
         const svg = super.createRoot();
 
@@ -14,13 +28,20 @@ export default class BarChart extends MoneyChart {
     }
 
     update(state) {
-        const scales = this._scales(state.data);
+        const data = state.data.map((d, i) => {
+            return {
+                value: d.value / 100,
+                period: i,
+            };
+        });
 
-        this._drawAxis(scales, state.data);
-        this._drawBars(scales, state.data);
+        const scales = this.getScales(data);
+
+        this.drawAxis(scales, data);
+        this.drawBars(scales, data);
     }
 
-    _scales(data) {
+    getScales(data) {
         const x = d3.scale.ordinal()
             .rangeRoundBands([0, this.props.width])
             .domain(data.map(d => d.period).reverse());
@@ -32,7 +53,7 @@ export default class BarChart extends MoneyChart {
         return { x: x, y: y };
     }
 
-    _drawAxis(scales) {
+    drawAxis(scales) {
         const xAxis = d3.svg.axis()
             .orient('top')
             .tickPadding(5)
@@ -42,7 +63,7 @@ export default class BarChart extends MoneyChart {
             .call(xAxis);
     }
 
-    _drawBars(scales, data) {
+    drawBars(scales, data) {
         const bars = d3.select(this.el).selectAll('.bars');
 
         const bar = bars.selectAll('.bar')
