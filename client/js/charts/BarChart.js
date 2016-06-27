@@ -1,13 +1,15 @@
 import d3 from 'd3';
 import MoneyChart from './MoneyChart';
 
+import { isSmallScreen } from '../config/interface';
+
 export default class BarChart extends MoneyChart {
 
     constructor(el, props) {
         super(el, props);
 
         this.props.margin = {
-            top: 20,
+            top: 30,
             right: 10,
             bottom: 40,
             left: 40,
@@ -58,6 +60,10 @@ export default class BarChart extends MoneyChart {
             .orient('top')
             .tickPadding(5)
             .scale(scales.x);
+
+        if (isSmallScreen()) {
+            xAxis.tickValues([0, 5, 10]);
+        }
 
         d3.select(this.el).selectAll('.x-axis')
             .call(xAxis);
