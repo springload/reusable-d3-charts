@@ -6,3 +6,4 @@ coverage/
 gulp/
 gulpfile.js
 core/static/
+client/js/tests/integration/

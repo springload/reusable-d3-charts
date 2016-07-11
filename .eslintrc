@@ -12,9 +12,10 @@
         "no-warning-comments": [1, { "terms": ["todo", "fixme", "xxx"], "location": "start" }],
         "react/sort-comp": [0],
         "react/jsx-boolean-value": [0],
-        "react/jsx-no-bind": [0],
-        "react/prefer-es6-class": [0, 'never'],
+        "react/jsx-no-bind": [1],
+        "react/jsx-indent": [2, 4],
         "react/jsx-indent-props": [2, 4],
+        "react/prefer-es6-class": [0, 'never'],
         "jsx-quotes": [1, "prefer-double"]
     },
 
