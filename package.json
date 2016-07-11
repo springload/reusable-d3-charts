@@ -68,6 +68,7 @@
     "css": "gulp css",
     "js": "gulp js",
     "watch": "gulp watch",
-    "deploy": "./bin/deploy.sh"
+    "deploy": "./bin/deploy.sh",
+    "shrinkwrap": "npm shrinkwrap --dev"
   }
 }

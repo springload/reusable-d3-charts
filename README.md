@@ -101,6 +101,15 @@ npm run test:unit:coverage
 open coverage/lcov-report/index.html
 ```
 
+### Adding and upgrading dependencies
+
+This project uses [`npm shrinkwrap`](https://docs.npmjs.com/cli/shrinkwrap) in order to pin all of the dependency tree for installation. The file that is used when installing the project is **`npm-shrinkwrap.json`**. To update it,
+
+1. First make sure you are using the right Node and npm versions with `node --version` and `npm --version` (should match the versions in the project's) `package.json`.
+2. Then install or upgrade dependencies by using `npm install --save <package>` or `npm install --save-dev <package>`. Manual installs will not be picked up by `shrinkwrap`.
+3. When you've confirmed the project still works with the new dependencies, run **`npm run shrinkwrap`** in order to regenerate the `npm-shrinkwrap.json` file
+4. Commit this file, and push.
+
 ## Deploying a new version
 
 ### To production (`gh-pages`)
