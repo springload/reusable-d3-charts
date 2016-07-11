@@ -107,7 +107,7 @@ export default React.createClass({
                             handleChangeTo={this.handleChangeTo.bind(this, 0)}
                             resetTimeFilter={this.resetTimeFilter.bind(this, 0)}
                         />
-                        <Export targetId="basic-line-chart-wrapper" dataset={activeDatasets[0]}/>
+                        <Export targetId="basic-line-chart-wrapper" dataset={activeDatasets[0]} />
                     </div>
                 </div>
 
@@ -140,7 +140,7 @@ export default React.createClass({
                             handleChangeTo={this.handleChangeTo.bind(this, 2)}
                             resetTimeFilter={this.resetTimeFilter.bind(this, 2)}
                         />
-                        <Export targetId="area-chart-wrapper" dataset={activeDatasets[2]}/>
+                        <Export targetId="area-chart-wrapper" dataset={activeDatasets[2]} />
                     </div>
                 </div>
 
@@ -173,7 +173,7 @@ export default React.createClass({
                             handleChangeTo={this.handleChangeTo.bind(this, 3)}
                             resetTimeFilter={this.resetTimeFilter.bind(this, 3)}
                         />
-                        <Export targetId="progress-chart-wrapper" dataset={activeDatasets[3]}/>
+                        <Export targetId="progress-chart-wrapper" dataset={activeDatasets[3]} />
                     </div>
                 </div>
 
@@ -206,7 +206,7 @@ export default React.createClass({
                             handleChangeTo={this.handleChangeTo.bind(this, 4)}
                             resetTimeFilter={this.resetTimeFilter.bind(this, 4)}
                         />
-                        <Export targetId="bar-chart-wrapper" dataset={activeDatasets[4]}/>
+                        <Export targetId="bar-chart-wrapper" dataset={activeDatasets[4]} />
                     </div>
                 </div>
 
@@ -240,7 +240,7 @@ export default React.createClass({
                             handleChangeTo={this.handleChangeTo.bind(this, 5)}
                             resetTimeFilter={this.resetTimeFilter.bind(this, 5)}
                         />
-                        <Export targetId="interactive-chart-wrapper" dataset={activeDatasets[5]}/>
+                        <Export targetId="interactive-chart-wrapper" dataset={activeDatasets[5]} />
                     </div>
                 </div>
             </div>

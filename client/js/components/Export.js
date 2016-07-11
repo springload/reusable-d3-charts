@@ -10,18 +10,18 @@ export default React.createClass({
         dataset: React.PropTypes.object.isRequired,
     },
 
-    _makeFilename(extension) {
+    getFilename(extension) {
         const filename = this.props.dataset.label;
         return [(`${filename}_export`).replace(/\s/g, '_'), extension].join('.');
     },
 
     downloadPNG() {
-        const filename = this._makeFilename('png');
+        const filename = this.getFilename('png');
         download.downloadPNG(this.props.targetId, filename);
     },
 
     downloadSVG() {
-        const filename = this._makeFilename('svg');
+        const filename = this.getFilename('svg');
         download.downloadSVG(this.props.targetId, filename);
     },
 
