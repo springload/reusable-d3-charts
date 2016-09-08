@@ -52,12 +52,13 @@
     "save-svg-as-png": "^1.0.2"
   },
   "scripts": {
-    "start": "npm run watch -s",
+    "start": "npm run lint:versions -s && npm run watch -s",
+    "lint:versions": "NVM_VERSION=$(cat .nvmrc); NODE_VERSION=$(node --version); echo $NODE_VERSION | grep -q $NVM_VERSION && echo \"✓ running node $NODE_VERSION - all clear\" || (echo \"✗ running node $NODE_VERSION - expected $NVM_VERSION. Use nvm to install the right version.\" && exit 1)",
     "linter:js": "eslint",
     "linter:js:ci": "eslint --no-eslintrc --config .ci-eslintrc",
     "lint:js": "npm run linter:js -s -- .",
     "lint:js:ci": "npm run linter:js:ci -s -- .",
-    "lint": "npm run lint:js -s",
+    "lint": "npm run lint:versions -s && npm run lint:js -s",
     "test": "npm run test:unit -s",
     "test:unit": "mocha --compilers js:babel-register client/js/tests/unit",
     "test:unit:watch": "mocha --watch --compilers js:babel-register client/js/tests/unit",
@@ -69,6 +70,6 @@
     "js": "gulp js",
     "watch": "gulp watch",
     "deploy": "./bin/deploy.sh",
-    "shrinkwrap": "npm shrinkwrap --dev"
+    "shrinkwrap": "npm run lint:versions -s && npm shrinkwrap --dev && sed -i 's/https/http/g' npm-shrinkwrap.json",
   }
 }

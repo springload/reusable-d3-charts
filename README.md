@@ -1,4 +1,4 @@
-reusable-d3-charts [![Build Status](https://travis-ci.org/springload/reusable-d3-charts.svg?branch=master)](https://travis-ci.org/springload/reusable-d3-charts)
+greusable-d3-charts [![Build Status](https://travis-ci.org/springload/reusable-d3-charts.svg?branch=master)](https://travis-ci.org/springload/reusable-d3-charts)
 =====================
 
 > Reusable charts built with [D3](https://d3js.org/). [See them live](https://springload.github.io/reusable-d3-charts/).
@@ -99,12 +99,13 @@ npm run test:unit:watch
 
 ### Adding and upgrading dependencies
 
-This project uses [`npm shrinkwrap`](https://docs.npmjs.com/cli/shrinkwrap) in order to pin all of the dependency tree for installation. The file that is used when installing the project is **`npm-shrinkwrap.json`**. To update it,
+This project is [shrinkwrapped](https://docs.npmjs.com/cli/shrinkwrap). Its dependencies are locked down in `npm-shrinkwrap.json` file. To update them,
 
-1. First make sure you are using the right Node and npm versions with `node --version` and `npm --version` (should match the versions in the project's) `package.json`.
-2. Then install or upgrade dependencies by using `npm install --save <package>` or `npm install --save-dev <package>`. Manual installs will not be picked up by `shrinkwrap`.
-3. When you've confirmed the project still works with the new dependencies, run **`npm run shrinkwrap`** in order to regenerate the `npm-shrinkwrap.json` file
-4. Commit this file, and push.
+1. Use `npm run lint:versions` to confirm you are using the right node version.
+2. Use `npm install <package>` with `--save` or `--save-dev` options to change the dependencies.
+3. Check the project still works with the new dependencies / new versions.
+4. Run **`npm run shrinkwrap`** to regenerate `npm-shrinkwrap.json`.
+5. Commit this file, and push.
 
 ## Deploying a new version
 
