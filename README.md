@@ -86,7 +86,7 @@ npm run test
 
 ### Tests
 
-We use `mocha`, `chai`, `sinon` and `isparata` for unit tests.
+We use `mocha`, `chai` and `sinon` for unit tests.
 
 ```sh
 # Run all the tests.
@@ -95,10 +95,6 @@ npm run test
 npm run test:unit
 # Run unit tests in a watcher.
 npm run test:unit:watch
-# Run your tests and outputs code coverage.
-npm run test:unit:coverage
-# And then to see the coverage:
-open coverage/lcov-report/index.html
 ```
 
 ### Adding and upgrading dependencies
