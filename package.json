@@ -69,7 +69,7 @@
     "css": "gulp css",
     "js": "gulp js",
     "watch": "gulp watch",
-    "shrinkwrap": "npm run lint:versions -s && npm shrinkwrap --dev && sed -i 's/https/http/g' npm-shrinkwrap.json",
+    "shrinkwrap": "npm run lint:versions -s && npm shrinkwrap --dev && sed -i 's/https:/http:/g' npm-shrinkwrap.json",
     "deploy": "./bin/deploy.sh"
   }
 }
