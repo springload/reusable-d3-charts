@@ -16,7 +16,7 @@ reusable-d3-charts [![Build Status](https://travis-ci.org/springload/reusable-d3
 
 ## Why should I use those instead of `<high-level abstraction over D3 of the day>`?
 
-> TL;DR; D3 allows full customisability and is built on web standards.
+> TL;DR; D3 allows full customisability, and leverages the web standards you know and love.
 
 First of all, because you want to have the final say on what your charts look like. This is the whole point of using something like D3: we want our graphs to be art-directed, rendering differently across projects and across screen sizes.
 
