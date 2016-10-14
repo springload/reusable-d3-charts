@@ -1,10 +1,15 @@
 language: node_js
+cache:
+  directories:
+    - $HOME/.npm
+    - $HOME/.yarn-cache
+    - node_modules
 before_script:
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
-before_install: npm install -g yarn
+before_install: npm install -g yarn --cache-min 99999999
 install: yarn install
-script: yarn run test:ci
+script: npm run test:ci
 notifications:
   email: false
   slack:

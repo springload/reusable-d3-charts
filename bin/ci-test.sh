@@ -13,7 +13,7 @@ export TEST_DOMAIN="localhost:8000"
 # fi
 
 # Make sure the front-end build works.
-yarn run build
+npm run build
 
 # Start the server if relevant.
 python -m SimpleHTTPServer &
@@ -24,7 +24,7 @@ function before_exit {
     set +e
     echo "Cleaning up before test exits"
 
-    yarn run lint
+    npm run lint
 
     # Kill the server if relevant.
     kill $SERVER_PID
@@ -33,6 +33,6 @@ function before_exit {
 trap before_exit EXIT
 
 # Project tests.
-yarn run test -- --coverage
+npm run test -- --coverage
 
 exit 0
