@@ -33,6 +33,6 @@ function before_exit {
 trap before_exit EXIT
 
 # Project tests.
-yarn run test
+yarn run test -- --coverage
 
 exit 0
