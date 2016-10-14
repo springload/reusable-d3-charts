@@ -8,6 +8,7 @@ coverage
 
 # production
 build
+reusable-d3-charts
 
 # misc
 .DS_Store

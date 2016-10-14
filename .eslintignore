@@ -3,4 +3,5 @@ node_modules
 **/lib/
 public/
 build/
+reusable-d3-charts/
 coverage/

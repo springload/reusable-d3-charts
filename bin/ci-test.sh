@@ -5,7 +5,8 @@
 # Fail on first line that fails.
 set -e
 
-export TEST_DOMAIN="localhost:8000"
+export TEST_DOMAIN="localhost:8000/reusable-d3-charts"
+export CI=true
 
 # To only run things on master:
 # if [ "$CI_BRANCH" == "master" ];
@@ -15,7 +16,8 @@ export TEST_DOMAIN="localhost:8000"
 # Make sure the front-end build works.
 npm run build
 
-# Start the server if relevant.
+# Start the server.
+mv build reusable-d3-charts
 python -m SimpleHTTPServer &
 SERVER_PID=$!
 
@@ -24,7 +26,7 @@ function before_exit {
     set +e
     echo "Cleaning up before test exits"
 
-    npm run lint
+    mv reusable-d3-charts build
 
     # Kill the server if relevant.
     kill $SERVER_PID
@@ -32,7 +34,10 @@ function before_exit {
 
 trap before_exit EXIT
 
+# Run linting
+npm run lint
+
 # Project tests.
-npm run test -- --coverage
+npm run test
 
 exit 0
