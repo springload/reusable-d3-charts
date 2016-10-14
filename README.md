@@ -48,7 +48,7 @@ Most of the examples are divided into two files: a base class and one that inher
 
 ### Installation
 
-> You first need to clone the project on your computer, and to install [Node](https://nodejs.org). This project also uses [nvm](https://github.com/creationix/nvm).
+> You first need to clone the project on your computer, and to install [Node](https://nodejs.org). This project also uses [nvm](https://github.com/creationix/nvm), and [yarn](https://yarnpkg.com/).
 
 From the command-line:
 
@@ -62,9 +62,8 @@ To install our dependencies:
 
 ```sh
 nvm install
-npm install --global eslint eslint-plugin-react babel-eslint eslint-config-airbnb sass-lint
 # Then, install all project dependencies.
-npm install
+yarn install
 # Optionally, install the git hooks.
 ./.githooks/deploy
 ```
@@ -75,37 +74,16 @@ npm install
 
 ```sh
 # Start the server and the development tools.
-npm run start
-# Builds frontend assets.
-npm run build
-# Runs linting.
-npm run lint
+yarn run start
+# Builds for production
+yarn run build
+# Rebuild the styles
+yarn run css
 # Runs tests.
-npm run test
+yarn run test
+# Runs linting.
+yarn run lint
 ```
-
-### Tests
-
-We use `mocha`, `chai` and `sinon` for unit tests.
-
-```sh
-# Run all the tests.
-npm run test
-# Run unit tests.
-npm run test:unit
-# Run unit tests in a watcher.
-npm run test:unit:watch
-```
-
-### Adding and upgrading dependencies
-
-This project is [shrinkwrapped](https://docs.npmjs.com/cli/shrinkwrap). Its dependencies are locked down in `npm-shrinkwrap.json` file. To update them,
-
-1. Use `npm run lint:versions` to confirm you are using the right node version.
-2. Use `npm install <package>` with `--save` or `--save-dev` options to change the dependencies.
-3. Check the project still works with the new dependencies / new versions.
-4. Run **`npm run shrinkwrap`** to regenerate `npm-shrinkwrap.json`.
-5. Commit this file, and push.
 
 ## Deploying a new version
 

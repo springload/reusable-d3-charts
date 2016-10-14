@@ -1,5 +1,6 @@
 import React from 'react';
 import Icon from 'react-svg-icon';
+import _omit from 'lodash/omit';
 
 /**
  * A reusable button. Uses a <a> tag unless `type` is specified.
@@ -64,9 +65,21 @@ export default React.createClass({
             />
         ) : null;
 
+        const props = _omit(this.props, [
+            'className',
+            'icon',
+            'iconClassName',
+            'children',
+            'accessibleLabel',
+            'isLoading',
+            'onClick',
+            'preventDefault',
+            'iconLeft',
+        ]);
+
         return (
             <a
-                {...this.props}
+                {...props}
                 className={`${className} ${hasIcon && hasText ? `icon-text${iconLeft ? '' : '--rev'}` : ''} ${isLoading ? '-loading' : ''}`}
                 onClick={this.handleClick}
                 rel={target === '_blank' ? 'noopener' : null}

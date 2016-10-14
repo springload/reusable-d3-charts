@@ -18,24 +18,18 @@ else
     set -e
 
     NEW_FILES=$(git --no-pager diff --name-only --cached)
-    JS_FILES=$(echo "$NEW_FILES" | { grep client/js || true; })
-    SASS_FILES=$(echo "$NEW_FILES" | { grep client/sass || true; })
+    JS_FILES=$(echo "$NEW_FILES" | { grep .js$ || true; })
 
     if [ -n "$JS_FILES" ];
     then
-        npm run linter:js -s -- $JS_FILES
-    fi
-
-    if [ -n "$SCSS_FILES" ];
-    then
-        npm run linter:sass -s -- $SCSS_FILES
+        yarn run linter:js -s -- $JS_FILES
     fi
 
     # To test if there are changes to Sass files as well (not useful at the moment):
     # if [ -n "$JS_FILES" ] || [ -n "$SASS_FILES" ];
     if [ -n "$JS_FILES" ];
     then
-        npm run test -s;
+        CI=true yarn run test -s;
         exit 0
     fi
 fi

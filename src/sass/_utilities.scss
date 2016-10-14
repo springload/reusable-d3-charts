@@ -63,15 +63,15 @@
 }
 
 .u-hidden-small {
-    // @small (_breakpoints.scss) must use max-width 
-    @include small { 
+    // @small (_breakpoints.scss) must use max-width
+    @include small {
         display:none;
         visibility: hidden;
     }
 }
 
 .u-hidden-medium {
-    @include medium { 
+    @include medium {
         display:none;
         visibility: hidden;
     }
@@ -101,7 +101,7 @@
 
 .u-list,
 %list-reset {
-    margin: 0; 
+    margin: 0;
     padding: 0;
     list-style: none;
 }
@@ -159,7 +159,7 @@
     height: 1px;
     padding: 0;
     margin: -1px;
-    overflow: hidden; 
+    overflow: hidden;
     clip: rect(0, 0, 0, 0); /* Deprecated but still needed to support Firefox & IE */
     -webkit-clip-path: inset(1px); /* Webkit support */
     clip-path: inset(1px); /* New (experimental) CSS property */

@@ -1,5 +1,3 @@
-'use strict';
-
 const nightmare = require('nightmare');
 
 const TEST_DOMAIN = process.env.TEST_DOMAIN || 'localhost:3000';
@@ -57,8 +55,8 @@ night.on('console', (type, message, additionalMessage) => {
 night.TEST_DOMAIN = TEST_DOMAIN;
 
 // Root-Level hook that runs after all tests.
-after('teardown nightmare instance', function*() {
-    yield night.end();
-});
+// afterAll('teardown nightmare instance', async () => {
+//     await night.end();
+// });
 
 module.exports = night;

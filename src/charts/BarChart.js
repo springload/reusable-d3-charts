@@ -55,19 +55,19 @@ export default class BarChart extends MoneyChart {
         return { x: x, y: y };
     }
 
-    drawAxis(scales) {
-        const xAxis = d3.svg.axis()
-            .orient('top')
-            .tickPadding(5)
-            .scale(scales.x);
+drawAxis(scales) {
+    const xAxis = d3.svg.axis()
+        .orient('top')
+        .tickPadding(5)
+        .scale(scales.x);
 
-        if (isSmallScreen()) {
-            xAxis.tickValues([0, 5, 10]);
-        }
-
-        d3.select(this.el).selectAll('.x-axis')
-            .call(xAxis);
+    if (isSmallScreen()) {
+        xAxis.tickValues([0, 5, 10]);
     }
+
+    d3.select(this.el).selectAll('.x-axis')
+        .call(xAxis);
+}
 
     drawBars(scales, data) {
         const bars = d3.select(this.el).selectAll('.bars');

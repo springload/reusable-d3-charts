@@ -2,8 +2,5 @@ node_modules
 *.min.js
 **/lib/
 public/
+build/
 coverage/
-gulp/
-gulpfile.js
-core/static/
-client/js/tests/integration/
