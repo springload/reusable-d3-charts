@@ -81,4 +81,9 @@ describe('Charts', () => {
             expect(lineBefore).not.toEqual(lineAfter);
         });
     });
+
+    // TODOO Should be a global afterAll.
+    it('teardown nightmare instance', async () => {
+        await night.end();
+    });
 });

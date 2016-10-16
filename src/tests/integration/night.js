@@ -54,9 +54,4 @@ night.on('console', (type, message, additionalMessage) => {
 
 night.TEST_DOMAIN = TEST_DOMAIN;
 
-// Root-Level hook that runs after all tests.
-// afterAll('teardown nightmare instance', async () => {
-//     await night.end();
-// });
-
 module.exports = night;
