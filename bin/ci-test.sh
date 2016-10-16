@@ -6,7 +6,6 @@
 set -e
 
 export TEST_DOMAIN="localhost:8000/reusable-d3-charts"
-export CI=true
 
 # To only run things on master:
 # if [ "$CI_BRANCH" == "master" ];
