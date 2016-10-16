@@ -42,7 +42,7 @@
     "css": "node-sass src/sass/screen.scss src/index.css",
     "build": "npm run lint:versions -s && npm run css -s && react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "test:ci": "CI=TRUE ./bin/ci-test.sh",
+    "test:ci": "CI=true ./bin/ci-test.sh",
     "linter:js": "eslint",
     "lint:js": "npm run linter:js -s -- .",
     "lint": "npm run lint:versions -s && npm run lint:js -s",

@@ -37,6 +37,6 @@ trap before_exit EXIT
 npm run lint
 
 # Project tests.
-npm run test
+npm run test -- --watch=no
 
 exit 0
