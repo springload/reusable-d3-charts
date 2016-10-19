@@ -36,6 +36,10 @@ export function initErrorTracking() {
 }
 
 export const errors = {
+    ajax(status, endpoint) {
+       analyticsException(`AJAX error: ${status} ${endpoint}`);
+   },
+
     download(type, reason) {
         analyticsException(`Download error: ${type} (${reason})`);
     },

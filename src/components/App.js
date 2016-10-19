@@ -4,12 +4,15 @@ import Export from '../components/Export';
 import TimeFilter from '../components/TimeFilter';
 import ChartWrapper from '../components/ChartWrapper';
 import InteractiveChartWrapper from '../components/InteractiveChartWrapper';
+import AdvancedChartWrapper from '../components/AdvancedChartWrapper';
+import AdvancedDownloadWrapper from '../components/AdvancedDownloadWrapper';
 
 import BasicLineChart from '../charts/BasicLineChart';
 import AreaChart from '../charts/AreaChart';
 import ProgressChart from '../charts/ProgressChart';
 import BarChart from '../charts/BarChart';
 import InteractiveLineChart from '../charts/InteractiveLineChart';
+import AdvancedLineChart from '../charts/AdvancedLineChart';
 
 import datasets from '../datasets';
 
@@ -22,8 +25,9 @@ export default React.createClass({
 
     getInitialState() {
         return {
-            activeDatasetIndexes: [0, 1, 2, 3, 4, 5],
+            activeDatasetIndexes: [0, 1, 2, 3, 4, 5, 9],
             timeFilters: [
+                { from: null, to: null },
                 { from: null, to: null },
                 { from: null, to: null },
                 { from: null, to: null },
@@ -241,6 +245,48 @@ export default React.createClass({
                             resetTimeFilter={this.resetTimeFilter.bind(this, 5)}
                         />
                         <Export targetId="interactive-chart-wrapper" dataset={activeDatasets[5]} />
+                    </div>
+                </div>
+
+                <div className="grid">
+                    <div className="medium-one-half large-two-thirds gutters">
+                        <AdvancedChartWrapper
+                            Chart={AdvancedLineChart}
+                            id="advanced-chart-wrapper"
+                            dataset={activeDatasets[6]}
+                            filterFrom={timeFilters[6].from}
+                            filterTo={timeFilters[6].to}
+                        />
+                        <AdvancedDownloadWrapper
+                            Chart={AdvancedLineChart}
+                            id="advanced-download-wrapper"
+                            dataset={activeDatasets[6]}
+                            filterFrom={timeFilters[6].from}
+                            filterTo={timeFilters[6].to}
+                        />
+                        <h4>{activeDatasets[6].label}</h4>
+                    </div>
+                    <div className="medium-one-half large-one-third gutters">
+                        <a href="https://github.com/springload/reusable-d3-charts/blob/master/client/js/charts/AdvancedLineChart.js" className="u-block"><h3>Advanced line chart</h3></a>
+                        <input
+                            type="range"
+                            className="full"
+                            value={activeDatasetIndexes[6]}
+                            max={MAX}
+                            min={MIN}
+                            step={STEP}
+                            onChange={this.changeActiveDataset.bind(this, 6)}
+                            onClick={this.changeActiveDataset.bind(this, 6)}
+                        />
+                        <TimeFilter
+                            filterFrom={timeFilters[6].from}
+                            filterTo={timeFilters[6].to}
+                            availableYears={activeDatasets[6].timeSeries.getAvailableYears()}
+                            handleChangeFrom={this.handleChangeFrom.bind(this, 6)}
+                            handleChangeTo={this.handleChangeTo.bind(this, 6)}
+                            resetTimeFilter={this.resetTimeFilter.bind(this, 6)}
+                        />
+                        <Export targetId="advanced-download-wrapper" dataset={activeDatasets[6]} />
                     </div>
                 </div>
             </div>

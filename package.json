@@ -24,7 +24,8 @@
     "eslint-plugin-react": "^6.4.1",
     "nightmare": "^2.7.0",
     "node-sass": "^3.10.1",
-    "react-scripts": "0.6.1"
+    "react-scripts": "0.6.1",
+    "sinon": "^1.17.6"
   },
   "dependencies": {
     "d3": "3",

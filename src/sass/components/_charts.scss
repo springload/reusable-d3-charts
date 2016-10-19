@@ -1,6 +1,26 @@
+// -----------------------------------------------------------------------------
+// Charts
+// -----------------------------------------------------------------------------
+
+// Containers
+// -----------------------------------------------------------------------------
+
 // SVG root element
 .chart {
-    font-family: monospace;
+    user-select: none;
+    fill: currentcolor;
+
+    text {
+        font-family: $font-family-sans-serif;
+    }
+
+    &.-download {
+        display: none;
+    }
+}
+
+.chart-background {
+    fill: $color-white;
 }
 
 // Axis tick and axis line.
@@ -11,6 +31,10 @@
     stroke: #646d66;
     stroke-opacity: .3;
     shape-rendering: crispEdges;
+}
+
+.-rotated {
+    display: none;
 }
 
 .domain {
