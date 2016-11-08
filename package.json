@@ -39,14 +39,14 @@
     "save-svg-as-png": "^1.0.3"
   },
   "scripts": {
-    "start": "npm run lint:versions -s && npm run css -s && react-scripts start",
+    "start": "yarn run lint:versions -s && yarn run css -s && react-scripts start",
     "css": "node-sass src/sass/screen.scss src/index.css",
-    "build": "npm run lint:versions -s && npm run css -s && react-scripts build",
+    "build": "yarn run lint:versions -s && yarn run css -s && react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "test:ci": "./bin/ci-test.sh",
     "linter:js": "eslint",
-    "lint:js": "npm run linter:js -s -- .",
-    "lint": "npm run lint:versions -s && npm run lint:js -s",
+    "lint:js": "yarn run linter:js -s -- .",
+    "lint": "yarn run lint:versions -s && yarn run lint:js -s",
     "lint:versions": "NVM_VERSION=$(cat .nvmrc); NODE_VERSION=$(node --version); echo $NODE_VERSION | grep -q $NVM_VERSION && echo \"✓ running node $NODE_VERSION - all clear\" || (echo \"✗ running node $NODE_VERSION - expected $NVM_VERSION. Use nvm to install the right version.\" && exit 1)"
   }
 }
