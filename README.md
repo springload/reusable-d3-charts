@@ -97,5 +97,5 @@ git checkout master
 git pull
 git push origin master
 # Then push the new changes
-npm run deploy
+yarn run deploy
 ```
